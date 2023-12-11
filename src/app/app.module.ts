@@ -10,6 +10,8 @@ import { SignupComponent } from './signup/signup.component';
 import { CustomerHomeComponent } from './customer-home/customer-home.component';
 import { VendorHomeComponent } from './vendor-home/vendor-home.component';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     FormsModule,
     NgbModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
