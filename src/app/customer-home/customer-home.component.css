@@ -1,0 +1,8 @@
+.card-img-overlay {
+  background-color: rgba(0, 0, 0, 0.471);
+  transition: opacity 0.3s ease-in-out;
+  cursor: pointer;
+}
+.card:hover .card-img-overlay {
+  opacity: 0; /* Change the opacity value for the hover effect */
+}

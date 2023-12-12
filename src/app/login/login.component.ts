@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class SignupLoginComponent {
-  constructor(private authService:AuthService,private router:Router){}
+  constructor(private authService:AuthService,private router:Router,private snackbar:MatSnackBar){}
     email!:string;
     pass!:string;
     onSubmit():void{
@@ -22,8 +23,9 @@ export class SignupLoginComponent {
           this.router.navigate(['/vendor_h']);
           return;
         }
+        this.snackbar.open("Email or Password is not valid",'ok',{duration: 3000});
       }
-      console.log("wrong credentials");
+      else this.snackbar.open("Please fill all fields",'ok',{duration: 3000}) ;
     }
 
 }

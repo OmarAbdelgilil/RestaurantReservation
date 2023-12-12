@@ -1,1 +1,15 @@
-<p>customer-home works!</p>
+<app-navbar-c></app-navbar-c>
+<div class="input-group" style="width: 70%;margin: 0 auto;margin-top: 20px;">
+  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+  <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init>search</button>
+</div>
+<div *ngFor="let i of restaurants">
+<div class="card bg-dark text-white" style="width: 60%;margin: 0 auto;margin-top: 20px;" >
+  <img class="card-img" src={{i.image}} alt="Card image" style="height: 300px;">
+  <div class="card-img-overlay" (click)="gotores(i.id)">
+    <h5 class="card-title">{{i.name}}</h5>
+    <p class="card-text">{{i.desc}}</p>
+    <p class="card-text">{{i.cat}}</p>
+  </div>
+</div>
+</div>

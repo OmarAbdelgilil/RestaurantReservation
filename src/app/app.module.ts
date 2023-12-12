@@ -12,6 +12,8 @@ import { VendorHomeComponent } from './vendor-home/vendor-home.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NavbarCComponent } from './navbar-c/navbar-c.component';
+import { RestaurantCComponent } from './restaurant-c/restaurant-c.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     SignupLoginComponent,
     SignupComponent,
     CustomerHomeComponent,
-    VendorHomeComponent
+    VendorHomeComponent,
+    NavbarCComponent,
+    RestaurantCComponent
   ],
   imports: [
     BrowserModule,

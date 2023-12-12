@@ -7,11 +7,13 @@ import { CustomerHomeComponent } from './customer-home/customer-home.component';
 import { VendorHomeComponent } from './vendor-home/vendor-home.component';
 import { uauthGuard } from './auth/uguard.guard';
 import { vauthGuard } from './auth/vguard.guard';
+import { RestaurantCComponent } from './restaurant-c/restaurant-c.component';
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'login',component:SignupLoginComponent},
   {path:'signup',component:SignupComponent},
   {path:'customer_h',component:CustomerHomeComponent,canActivate:[uauthGuard]},
+  {path:'rest',component:RestaurantCComponent,canActivate:[uauthGuard]},
   {path:'vendor_h',component:VendorHomeComponent,canActivate:[vauthGuard]},
   {path:'**',redirectTo:'/'}
 ];
