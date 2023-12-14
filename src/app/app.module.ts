@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -14,6 +14,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NavbarCComponent } from './navbar-c/navbar-c.component';
 import { RestaurantCComponent } from './restaurant-c/restaurant-c.component';
+import { CReservationsComponent } from './c-reservations/c-reservations.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { RestaurantsMapComponent } from './restaurants-map/restaurants-map.component'
 
 @NgModule({
   declarations: [
@@ -25,6 +28,11 @@ import { RestaurantCComponent } from './restaurant-c/restaurant-c.component';
     VendorHomeComponent,
     NavbarCComponent,
     RestaurantCComponent,
+<<<<<<< HEAD
+=======
+    CReservationsComponent,
+    RestaurantsMapComponent
+>>>>>>> 3902dcf59d49b2371818fdf9e2898c1d080d7540
   ],
   imports: [
     BrowserModule,
@@ -33,6 +41,9 @@ import { RestaurantCComponent } from './restaurant-c/restaurant-c.component';
     NgbModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
+    HttpClientModule,
+    GoogleMapsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
