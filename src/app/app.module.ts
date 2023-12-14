@@ -24,7 +24,7 @@ import { RestaurantCComponent } from './restaurant-c/restaurant-c.component';
     CustomerHomeComponent,
     VendorHomeComponent,
     NavbarCComponent,
-    RestaurantCComponent
+    RestaurantCComponent,
   ],
   imports: [
     BrowserModule,
