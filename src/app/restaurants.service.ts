@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class RestaurantsService {
   restaurants!:any[];
+  update:boolean=false;
+  reservationToUP!:any;
   private intervalId: any;
   subscription: any;
   constructor(private req : ApiRequestsService) {

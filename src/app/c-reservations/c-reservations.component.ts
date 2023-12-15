@@ -28,9 +28,12 @@ export class CReservationsComponent {
     })
   }
   restr:any[]=this.rest.restaurants;
-  updateRes()
-  {
-    this.router.navigate(['/customer_h']);
+  updateRes(i:number)
+  { 
+    this.rest.reservationToUP=this.res[i];
+    this.rest.update = true;
+    this.router.navigate(['/rest']);
+    
   }
   async deleteRes(i:number)
   {

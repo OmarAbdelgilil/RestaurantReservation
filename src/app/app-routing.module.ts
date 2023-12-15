@@ -10,6 +10,7 @@ import { vauthGuard } from './auth/vguard.guard';
 import { RestaurantCComponent } from './restaurant-c/restaurant-c.component';
 import { CReservationsComponent } from './c-reservations/c-reservations.component';
 import { RestaurantsMapComponent } from './restaurants-map/restaurants-map.component';
+import { UpdateReservationComponent } from './update-reservation/update-reservation.component';
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'login',component:SignupLoginComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path:'customer_h',component:CustomerHomeComponent,canActivate:[uauthGuard]},
   {path:'rest',component:RestaurantCComponent,canActivate:[uauthGuard]},
   {path:'myReservations',component:CReservationsComponent,canActivate:[uauthGuard]},
+  {path:'updateResrvation',component:UpdateReservationComponent,canActivate:[uauthGuard]},
   {path:'map',component:RestaurantsMapComponent,canActivate:[uauthGuard]},
   {path:'vendor_h',component:VendorHomeComponent,canActivate:[vauthGuard]},
   {path:'**',redirectTo:'/'}

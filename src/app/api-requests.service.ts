@@ -42,5 +42,9 @@ export class ApiRequestsService {
   {
     return this.http.delete<any>(this.url+'/deleteReservation',{body:data});
   }
+  updateReservation(data:any)
+  {
+    return this.http.put<any>(this.url+'/updateReservation',data);
+  }
 }
 
