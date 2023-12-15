@@ -48,7 +48,7 @@ export class RestaurantCComponent implements OnInit{
     console.log(this.noc);
     console.log(this.time);
     if(this.time!="Time Slots"&&this.noc){
-      let data = {numberOfSeats:this.noc,reservationTime:this.time,restaurantId:this.r.resid,customerId:this.auth.id,reservationName:this.auth.username};
+      let data = {sepcialReq:this.req,numberOfSeats:this.noc,reservationTime:this.time,restaurantId:this.r.resid,customerId:this.auth.id,reservationName:this.auth.username};
       console.log(this.api.createReservation(data).subscribe(async data=>{
         await data;
         console.log(data);
