@@ -11,11 +11,12 @@ export class RestaurantsService {
   subscription: any;
   constructor(private req : ApiRequestsService) {
     this.getRestaurants();
-   }
-   getRestaurants(): void {
+  }
+  getRestaurants(): void {
     this.req.getAllRestaurants().subscribe(async data => {
-      await data.reser; 
-      this.restaurants=data.reser;
+      await data.restaurants;
+      console.log(data);
+      this.restaurants=data.restaurants;
       console.log(this.restaurants);// Update the restaurants array
     });
     this.intervalId = setInterval(() => {
@@ -24,8 +25,8 @@ export class RestaurantsService {
         this.subscription.unsubscribe();
       }
       this.subscription = this.req.getAllRestaurants().subscribe(async data => {
-        await data.reser; 
-        this.restaurants=data.reser;
+        await data.restaurants;
+        this.restaurants=data.restaurants;
         console.log(this.restaurants);// Update the restaurants array
       });
     }, 1000); // 3000 milliseconds = 3 seconds

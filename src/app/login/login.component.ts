@@ -12,14 +12,15 @@ export class SignupLoginComponent {
   constructor(private authService:AuthService,private router:Router,private snackbar:MatSnackBar){}
     email!:string;
     pass!:string;
-    onSubmit():void{
+    async onSubmit():Promise<void>{
       if(this.email && this.pass)
       {
-        if(this.authService.login(this.email,this.pass))
+        if(await this.authService.login(this.email,this.pass))
         {
-          if(this.authService.role == 'customer')
+          console.log(this.authService.role);
+          if(this.authService.role === 'Customer')
           this.router.navigate(['/customer_h']);
-          if(this.authService.role == 'vendor')
+          if(this.authService.role === 'Vendor')
           this.router.navigate(['/vendor_h']);
           return;
         }

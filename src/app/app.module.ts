@@ -28,11 +28,9 @@ import { RestaurantsMapComponent } from './restaurants-map/restaurants-map.compo
     VendorHomeComponent,
     NavbarCComponent,
     RestaurantCComponent,
-<<<<<<< HEAD
-=======
     CReservationsComponent,
     RestaurantsMapComponent
->>>>>>> 3902dcf59d49b2371818fdf9e2898c1d080d7540
+
   ],
   imports: [
     BrowserModule,

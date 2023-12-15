@@ -7,7 +7,7 @@ export const uauthGuard = () => {
   const authService = inject(AuthService);
   const router = inject(Router);
 
-  if (authService.islogedin() && authService.role == 'customer') {
+  if (authService.islogedin() && authService.role == 'Customer') {
     return true;
   }
 

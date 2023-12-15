@@ -15,12 +15,32 @@ export class ApiRequestsService {
       'Content-Type': 'application/json'
     })
   };
+  signUp(data:any)
+  {
+    return this.http.post<any>(this.url+'/signup',data);
+  }
+  logIn(data:any)
+  {
+    return this.http.post<any>(this.url+'/login',data);
+  }
   getAllRestaurants()
   {
-    return this.http.get<any>(this.url+'/allrestaurants');
+    return this.http.get<any>(this.url+'/restaurants');
   }
   createReservation(data:any)
   {
     return this.http.post<any>(this.url+'/createReservation',data);
   }
+  getAllReservation(data:any){
+    return this.http.post<any>(this.url+'/getallReservations',data);
+  }
+  getRestaurant(data:any)
+  {
+    return this.http.post<any>(this.url+'/getRestaurant',data);
+  }
+  deleteReservation(data:any)
+  {
+    return this.http.delete<any>(this.url+'/deleteReservation',{body:data});
+  }
 }
+

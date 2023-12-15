@@ -7,7 +7,7 @@ export const vauthGuard = () => {
   const authService = inject(AuthService);
   const router = inject(Router);
 
-  if (authService.islogedin() && authService.role == 'vendor') {
+  if (authService.islogedin() && authService.role == 'Vendor') {
     return true;
   }
 
