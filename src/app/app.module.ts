@@ -17,7 +17,8 @@ import { RestaurantCComponent } from './restaurant-c/restaurant-c.component';
 import { CReservationsComponent } from './c-reservations/c-reservations.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { RestaurantsMapComponent } from './restaurants-map/restaurants-map.component';
-import { UpdateReservationComponent } from './update-reservation/update-reservation.component'
+import { UpdateReservationComponent } from './update-reservation/update-reservation.component';
+import { NavbarVComponent } from './navbar-v/navbar-v.component'
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { UpdateReservationComponent } from './update-reservation/update-reservat
     RestaurantCComponent,
     CReservationsComponent,
     RestaurantsMapComponent,
-    UpdateReservationComponent
+    UpdateReservationComponent,
+    NavbarVComponent
 
   ],
   imports: [

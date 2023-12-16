@@ -46,5 +46,9 @@ export class ApiRequestsService {
   {
     return this.http.put<any>(this.url+'/updateReservation',data);
   }
+  getVendorReservations(data:any)
+  {
+    return this.http.post<any>(this.url+'/vendors/getRestReservations',data);
+  }
 }
 

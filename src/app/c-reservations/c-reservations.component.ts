@@ -14,18 +14,21 @@ export class CReservationsComponent {
   res:any[]=[];
   restName:any[]=[];
   constructor(private router:Router,private api:ApiRequestsService,private auth:AuthService,private rest:RestaurantsService,private snackbar:MatSnackBar){
-    api.getAllReservation({customerId:auth.id}).subscribe(async (data)=>{
-      await data;
-      console.log(data);
-      this.res= data.reservations;
-      for(let i=0;i<this.res.length;i++){
-        api.getRestaurant({restaurantId:this.res[i].restaurantId}).subscribe(async (data)=>{
-          await data;
+    setInterval((()=>{
+      api.getAllReservation({customerId:auth.id}).subscribe(async (data)=>{
+        await data;
         console.log(data);
-        this.restName[i]=data.restaurant.name;
-        })
-      }
-    })
+        this.res= data.reservations;
+        for(let i=0;i<this.res.length;i++){
+          api.getRestaurant({restaurantId:this.res[i].restaurantId}).subscribe(async (data)=>{
+            await data;
+          console.log(data);
+          this.restName[i]=data.restaurant.name;
+          })
+        }
+      })
+    }),1000)
+    
   }
   restr:any[]=this.rest.restaurants;
   updateRes(i:number)
