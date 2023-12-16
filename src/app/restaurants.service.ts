@@ -6,19 +6,22 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RestaurantsService {
-  restaurants!:any[];
-  update:boolean=false;
-  reservationToUP!:any;
+  restaurants!: any[];
+  update: boolean = false;
+  reservationToUP!: any;
+  update1: boolean = false;
+  restaurantToUp!: any;
+  restarantId!: string;
   private intervalId: any;
   subscription: any;
-  constructor(private req : ApiRequestsService) {
+  constructor(private req: ApiRequestsService) {
     this.getRestaurants();
   }
   getRestaurants(): void {
     this.req.getAllRestaurants().subscribe(async data => {
       await data.restaurants;
       console.log(data);
-      this.restaurants=data.restaurants;
+      this.restaurants = data.restaurants;
       console.log(this.restaurants);// Update the restaurants array
     });
     this.intervalId = setInterval(() => {
@@ -28,10 +31,10 @@ export class RestaurantsService {
       }
       this.subscription = this.req.getAllRestaurants().subscribe(async data => {
         await data.restaurants;
-        this.restaurants=data.restaurants;
+        this.restaurants = data.restaurants;
         console.log(this.restaurants);// Update the restaurants array
       });
     }, 1000); // 3000 milliseconds = 3 seconds
   }
-resid!:string;
+  resid!: string;
 }
