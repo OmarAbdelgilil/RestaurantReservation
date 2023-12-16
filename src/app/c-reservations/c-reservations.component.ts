@@ -14,6 +14,18 @@ export class CReservationsComponent {
   res:any[]=[];
   restName:any[]=[];
   constructor(private router:Router,private api:ApiRequestsService,private auth:AuthService,private rest:RestaurantsService,private snackbar:MatSnackBar){
+    api.getAllReservation({customerId:auth.id}).subscribe(async (data)=>{
+      await data;
+      console.log(data);
+      this.res= data.reservations;
+      for(let i=0;i<this.res.length;i++){
+        api.getRestaurant({restaurantId:this.res[i].restaurantId}).subscribe(async (data)=>{
+          await data;
+        console.log(data);
+        this.restName[i]=data.restaurant.name;
+        })
+      }
+    })
     setInterval((()=>{
       api.getAllReservation({customerId:auth.id}).subscribe(async (data)=>{
         await data;
@@ -27,7 +39,7 @@ export class CReservationsComponent {
           })
         }
       })
-    }),1000)
+    }),5000)
     
   }
   restr:any[]=this.rest.restaurants;
@@ -53,7 +65,7 @@ export class CReservationsComponent {
       bool=true;
     })
     await new Promise(resolve=>{
-      setTimeout(resolve,3000);
+      setTimeout(resolve,2000);
     })
     console.log(r._id);
     if(!bool)this.api.deleteReservation({reservationId:r._id}).subscribe(data=>{

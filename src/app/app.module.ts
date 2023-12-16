@@ -19,7 +19,9 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { RestaurantsMapComponent } from './restaurants-map/restaurants-map.component';
 import { UpdateReservationComponent } from './update-reservation/update-reservation.component';
 import { NavbarVComponent } from './navbar-v/navbar-v.component'
-
+import { environment } from "./enviroment";
+import { initializeApp } from "firebase/app";
+initializeApp(environment.firebase);
 @NgModule({
   declarations: [
     AppComponent,

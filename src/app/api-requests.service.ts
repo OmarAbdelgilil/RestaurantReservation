@@ -50,5 +50,9 @@ export class ApiRequestsService {
   {
     return this.http.post<any>(this.url+'/vendors/getRestReservations',data);
   }
+  getbrowserToken(data:any)
+  {
+    return this.http.post<any>(this.url+'/getbrowserToken',data);
+  }
 }
 

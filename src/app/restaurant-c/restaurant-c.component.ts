@@ -4,7 +4,7 @@ import { ApiRequestsService } from '../api-requests.service';
 import { AuthService } from '../auth/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-
+import { getMessaging, getToken, onMessage } from "firebase/messaging";
 @Component({
   selector: 'app-restaurant-c',
   templateUrl: './restaurant-c.component.html',
@@ -22,6 +22,7 @@ export class RestaurantCComponent implements OnInit{
   reservationId!:string;
   title:string = "Create Reservation";
   buttonText:string = "RESERVE"; 
+  message:any = null;
   ngOnInit(): void {
     if(this.r.update)
     {
@@ -43,6 +44,7 @@ export class RestaurantCComponent implements OnInit{
       this.times = this.rest.timeSlots;
     },1000);
     console.log(this.times);
+    this.listen();
   }
 
 
@@ -93,5 +95,14 @@ export class RestaurantCComponent implements OnInit{
         })
       }));
     }
+  }
+  listen() {
+    const messaging = getMessaging();
+    onMessage(messaging, (payload) => {
+      console.log('Message received. ', payload);
+      this.message=payload;
+      console.log(payload);
+      let not = new Notification(payload.notification!.title!,payload.notification);
+    });
   }
 }
