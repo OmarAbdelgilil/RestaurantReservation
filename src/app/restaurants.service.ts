@@ -20,9 +20,9 @@ export class RestaurantsService {
   getRestaurants(): void {
     this.req.getAllRestaurants().subscribe(async data => {
       await data.restaurants;
-      console.log(data);
+      //console.log(data);
       this.restaurants = data.restaurants;
-      console.log(this.restaurants);// Update the restaurants array
+      //console.log(this.restaurants);// Update the restaurants array
     });
     this.intervalId = setInterval(() => {
       // If there's an ongoing subscription, unsubscribe to avoid memory leaks
@@ -32,7 +32,7 @@ export class RestaurantsService {
       this.subscription = this.req.getAllRestaurants().subscribe(async data => {
         await data.restaurants;
         this.restaurants = data.restaurants;
-        console.log(this.restaurants);// Update the restaurants array
+        //console.log(this.restaurants);// Update the restaurants array
       });
     }, 1000); // 3000 milliseconds = 3 seconds
   }

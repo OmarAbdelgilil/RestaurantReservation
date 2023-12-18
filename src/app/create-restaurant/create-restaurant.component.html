@@ -6,11 +6,11 @@
 
 <div class="form-div" id="resForm" style="margin: auto">
     <h1 style="text-align: center;">{{title}}</h1>
-    <form class="signin-form" style="margin-top: 100px;">
+    <form class="signin-form" style="margin-top: 10px;">
+        <div style="display: flex; justify-content: center; margin-top: 10px;"><img style="width: 1000px;height:500px; " [src]="image ? image :'https://th.bing.com/th/id/OIP.QrR56voakzVibJnCtTWw7gHaEK?rs=1&pid=ImgDetMain'"></div> <!--for previewing image-->
         <div class="form-group mb-3">
-            <img src=""> <!--for previewing image-->
             <label class="label">Image :</label>
-            <input type="text" [(ngModel)]="image" [ngModelOptions]="{standalone: true}" class="form-control" id="image"
+            <input  (change)="uploadImage($event)" type="file"  class="form-control" id="image"
                 required>
         </div>
         <div class="form-group mb-3">

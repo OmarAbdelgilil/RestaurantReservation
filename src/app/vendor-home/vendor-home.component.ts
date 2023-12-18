@@ -44,13 +44,25 @@ export class VendorHomeComponent implements OnInit{
             }
           });
         });
-        console.log(data);
+        // console.log(data);
       });
     },1000); 
   }
   cancelReservation(i:number)
   {
+    let restaurant:any;
+      this.restaurant.restaurants.forEach(res=>{
+        if(res._id == this.reservations[i].restaurantId)
+        {
+          console.log(res.numSeats);
+          restaurant=res;
+          return ;
+        }
+      });
+    let tablesToAdd = Math.floor((this.reservations[i].numberOfSeats + (restaurant.numSeats-1)) / restaurant.numSeats);
+    const tablesToUpdate =  restaurant.numTables + tablesToAdd;
     this.req.deleteReservation({reservationId :this.reservations[i]._id}).subscribe();
+    this.req.updateRestaurant({restaurantId:restaurant._id,numTables:tablesToUpdate}).subscribe();
   }
 
 

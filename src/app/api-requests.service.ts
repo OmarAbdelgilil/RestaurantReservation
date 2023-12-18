@@ -61,5 +61,9 @@ export class ApiRequestsService {
   {
     return this.http.post<any>(this.url+'/getbrowserToken',data);
   }
+  uploadImage(data:any)
+  {
+    return this.http.post<any>(this.url+'/upload',data);
+  }
 }
 

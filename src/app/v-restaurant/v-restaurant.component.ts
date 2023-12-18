@@ -12,20 +12,24 @@ import { RestaurantsService } from '../restaurants.service';
 })
 export class VRestaurantComponent implements OnInit {
   restaurants: any[] = [];
-  r_array: any[] = []
+  r_array: any[] = [];
+  reservations!:any[];
   constructor(private restaurant: RestaurantsService, private router: Router, private auth: AuthService, private snackbar: MatSnackBar, private api: ApiRequestsService) { }
 
   ngOnInit() {
     // this.s_array = this.restaurant.vendorRestruants;
     // console.log(this.s_array);
-    setInterval(() => {
-      this.restaurants = [];
+    this.restaurants = [];
       this.restaurant.restaurants.forEach(element => {
         if (element.vendorId == this.auth.id) {
           this.restaurants.push(element);
         }
       });
-    }, 1000);
+      this.api.getVendorReservations({vendorId : this.auth.id}).subscribe(async data=>{
+        await data
+       this.reservations = data.allReservations;
+        //console.log(data);
+      });
   }
 
 
@@ -51,7 +55,15 @@ export class VRestaurantComponent implements OnInit {
       setTimeout(resolve, 1000);
     })
     console.log(r._id);
+    console.log(this.reservations);
     if (!bool) {
+        this.reservations.forEach(res => {
+          if(r._id == res.restaurantId)
+          {
+            this.api.deleteReservation({reservationId :res._id}).subscribe(data=>console.log("delete : "+data));
+            console.log(r._id);
+          }
+        });
       this.api.deleteRestaurant({ restaurantId: r._id }).subscribe(data => {
         console.log(data);
       });

@@ -49,7 +49,7 @@ export class CreateRestaurantComponent {
     setInterval(() => {
       this.rest = this.r.restaurants.find((data) => {
         if (!this.update) return data._id == this.r.restarantId;
-        return data._id = this.r.restaurantToUp.restaurantId;
+        return data._id == this.r.restaurantToUp.restaurantId;
       });
     }, 1000);
   }
@@ -102,6 +102,18 @@ export class CreateRestaurantComponent {
         // 
       }));
     }
+  }
+
+  async uploadImage (event:any)
+  {
+    const file = event.target.files[0] as File;
+    const formData = new FormData();
+    formData.append('image', file, file.name);
+    this.api.uploadImage(formData).subscribe(async data=>{
+      await data;
+      this.image = data.link;
+    });
+
   }
 
   addtimeSlot() {

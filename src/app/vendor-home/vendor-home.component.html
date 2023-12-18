@@ -45,7 +45,7 @@
                         <tbody>
 
                             <tr *ngFor="let x of reservations; let i= index">
-                                <th scope="row">1</th>
+                                <th scope="row">{{i+1}}</th>
                                 <td>{{reservations[i].reservationName}}</td>
                                 <td>{{reservations[i].numberOfSeats}}</td>
                                 <td style="margin-top:10px;">{{reservations[i].reservationTime}}</td>

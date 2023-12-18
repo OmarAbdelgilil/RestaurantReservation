@@ -39,7 +39,7 @@ export class CReservationsComponent {
           })
         }
       })
-    }),5000)
+    }),6000)
     
   }
   restr:any[]=this.rest.restaurants;
@@ -52,6 +52,7 @@ export class CReservationsComponent {
   }
   async deleteRes(i:number)
   {
+
     const r=this.res[i];
     console.log(r);
     const n=this.restName[i];
@@ -68,8 +69,23 @@ export class CReservationsComponent {
       setTimeout(resolve,2000);
     })
     console.log(r._id);
-    if(!bool)this.api.deleteReservation({reservationId:r._id}).subscribe(data=>{
+    if(!bool)
+    {
+      let restaurant:any;
+      this.rest.restaurants.forEach(res=>{
+        if(res._id == r.restaurantId)
+        {
+          console.log(res.numSeats);
+          restaurant=res;
+          return ;
+        }
+      });
+      console.log(Math.floor((r.numberOfSeats + (restaurant.numSeats-1)) / restaurant.numSeats));
+      let tablesToAdd = Math.floor((r.numberOfSeats + (restaurant.numSeats-1)) / restaurant.numSeats);
+      const tablesToUpdate =  restaurant.numTables + tablesToAdd;
+      this.api.deleteReservation({reservationId:r._id}).subscribe(data=>{
       console.log(data);
-    });
+      this.api.updateRestaurant({restaurantId:restaurant._id,numTables:tablesToUpdate}).subscribe();
+    });}
   }
 }
